@@ -10,6 +10,8 @@
     "skipLibCheck": true,
     "target": "ES2020",
     "types": [
+      "react",
+      "@vitest/browser",
       "vitest-browser-react"
     ],
     "useDefineForClassFields": true,
