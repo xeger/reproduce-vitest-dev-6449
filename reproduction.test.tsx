@@ -1,12 +1,22 @@
 import { page, userEvent } from '@vitest/browser/context';
-import { expect, test } from 'vitest';
+import { beforeEach, expect, test } from 'vitest';
 
-test('reproduction', async () => {
-  const screen = page.render(<button>hello, world</button>);
+beforeEach(() => {
 
+});
+
+test('using screen', async () => {
+  let clicked = false;
+  page.render(<button onClick={() => {clicked = true}}>hello, world</button>);
   expect(page.getByRole('button')).toBeDefined();
-  expect(screen.getByRole('button')).toBeDefined();
-
   await userEvent.click(page.getByRole('button'));
-  await userEvent.click(screen.getByRole('button'));
+  expect.poll(() => clicked).toBe(true);
+});
+
+test('using page', async () => {
+  let clicked = false;
+  page.render(<button onClick={() => {clicked = true}}>hello, world</button>);
+  expect(page.getByRole('button')).toBeDefined();
+  await userEvent.click(page.getByRole('button'));
+  expect.poll(() => clicked).toBe(true);
 });
