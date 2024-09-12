@@ -8,9 +8,9 @@ beforeEach(() => {
 test('using screen', async () => {
   let clicked = false;
   const screen = page.render(<button onClick={() => {clicked = true}}>hello, world</button>);
-  expect.element(screen.getByRole('button'));
+  await expect.element(screen.getByRole('button')).toBeDefined();
   await userEvent.click(screen.getByRole('button'));
-  expect.poll(() => clicked).toBe(true);
+  await expect.poll(() => clicked).toBe(true);
 });
 
 test('using page', async () => {
