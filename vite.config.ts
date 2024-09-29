@@ -47,7 +47,7 @@ export default defineConfig({
     browser: {
       enabled: true,
       headless: true,
-      name: 'chromium',
+      name: 'chromium'
     },
     coverage: {
       include: ['src/**/*.tsx'],
